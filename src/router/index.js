@@ -3,19 +3,13 @@ import HomeView from '../views/HomeView.vue'
 import ProductsPage from '../views/ProductsPage.vue'
 import ProductDetails from '../views/ProductDetails.vue'
 import CartPage from '../views/CartPage.vue'
+import NotFoundPage from '../views/NotFoundPage.vue';
+
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
     path: '/products',
@@ -31,7 +25,11 @@ const routes = [
     path: '/products/:id',
     name: 'ProductDetails',
     component: ProductDetails
-  },
+  }, 
+  {
+    path: '/aa*',
+    component: NotFoundPage,
+  }
 ]
 
 const router = createRouter({
