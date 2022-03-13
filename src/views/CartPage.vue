@@ -1,27 +1,18 @@
 <template>
   <div id="page-wrap">
     <h1>Shopping Cart</h1>
-    <div
-      v-for="product in cartItems"
-      :key="product.id"
-      class="product-container"
-    >
-      <img :src="product.imageUrl" class="product-image" alt="" />
-      <div class="details-wrap">
-        <h3>{{ product.name }}</h3>
-        <p>$ {{ product.price }}</p>
-      </div>
-      <button class="remove-button">remove From Cart</button>
-    </div>
+    <ProductListView :cartItems="cartItems" />
     <h3 id="total-price">Total: ${{ totalPrice }}</h3>
     <button id="checkout-button">Proceed to Checkout</button>
   </div>
 </template>
 
 <script>
+import ProductListView from "../components/ProductListView.vue";
 import { cartItems } from "../fake-data";
 export default {
   name: "CartPage",
+  components: { ProductListView },
   data() {
     return {
       cartItems,
@@ -37,13 +28,6 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  border-bottom: 1px solid black;
-  margin: 0;
-  margin-top: 16px;
-  padding: 16px;
-}
-
 #total-price {
   padding: 16px;
   text-align: right;
@@ -53,27 +37,10 @@ h1 {
   width: 100%;
 }
 
-.product-container {
-  align-content: "center";
-  border-bottom: 1px solid #ddd;
-  display: flex;
+h1 {
+  border-bottom: 1px solid black;
+  margin: 0;
+  margin-top: 16px;
   padding: 16px;
-  width: 100%;
-}
-
-.product-image {
-  flex: 1;
-  height: 100px;
-  max-width: 100px;
-}
-
-.details-wrap {
-  padding: 0 16px;
-  flex: 3;
-}
-
-.remove-button {
-  flex: 1;
-  margin: auto;
 }
 </style>
